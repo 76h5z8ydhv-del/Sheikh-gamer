@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NexusGames | Digital Game Store</title>
+
   <style>
     :root {
       --bg-dark: #0b0e14;
@@ -19,23 +20,22 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      background-color: var(--bg-dark);
+      background: var(--bg-dark);
       color: var(--text);
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
 
     header {
-      background-color: var(--card-bg);
-      padding: 1rem 2rem;
+      background: var(--card-bg);
+      padding: 16px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 15px;
       border-bottom: 1px solid #242d3d;
       position: sticky;
       top: 0;
@@ -43,47 +43,46 @@
     }
 
     .logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: 1px;
+      font-size: 24px;
+      font-weight: bold;
       color: var(--accent);
     }
 
     .search-box {
-      padding: 0.6rem 1rem;
+      padding: 10px 14px;
       border-radius: 6px;
       border: 1px solid #334155;
       background: #0b0e14;
-      color: #fff;
+      color: white;
       width: 260px;
+      outline: none;
     }
 
     .cart-btn {
       background: #1e293b;
       border: 1px solid #334155;
-      color: #fff;
-      padding: 0.6rem 1.2rem;
+      color: white;
+      padding: 10px 18px;
       border-radius: 6px;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: bold;
     }
 
     .container {
       max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      width: 100%;
+      margin: 30px auto;
+      padding: 0 16px;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.5rem;
+      gap: 24px;
     }
 
     .card {
-      background-color: var(--card-bg);
-      border-radius: 8px;
+      background: var(--card-bg);
+      border-radius: 10px;
       overflow: hidden;
       border: 1px solid #242d3d;
       display: flex;
@@ -91,69 +90,79 @@
     }
 
     .card-img {
-      height: 150px;
+      height: 200px;
       background: #1e293b;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.5rem;
+      overflow: hidden;
+      font-size: 50px;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .card-body {
-      padding: 1.2rem;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
 
     .card-title {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+      font-size: 19px;
+      margin-bottom: 8px;
     }
 
     .platform-badge {
-      display: inline-block;
-      font-size: 0.75rem;
-      text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 0.8rem;
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
 
     .card-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 10px;
       margin-top: auto;
-      padding-top: 1rem;
+      padding-top: 15px;
     }
 
     .price {
-      font-size: 1.25rem;
-      font-weight: 700;
+      font-size: 20px;
+      font-weight: bold;
     }
 
     .btn {
-      background-color: var(--accent);
+      background: var(--accent);
       color: #000;
       border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
+      padding: 10px 18px;
+      border-radius: 5px;
       cursor: pointer;
-      font-weight: 600;
-      transition: background 0.2s;
+      font-weight: bold;
+      text-decoration: none;
+      text-align: center;
     }
 
     .btn:hover {
-      background-color: var(--accent-hover);
+      background: var(--accent-hover);
     }
 
-    /* Modal / Drawer */
+    .download-btn {
+      width: 100%;
+    }
+
     .modal {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.75);
       align-items: center;
       justify-content: center;
       z-index: 100;
@@ -161,8 +170,8 @@
 
     .modal-box {
       background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 8px;
+      padding: 30px;
+      border-radius: 10px;
       max-width: 500px;
       width: 90%;
       max-height: 85vh;
@@ -174,152 +183,573 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.75rem 0;
+      padding: 12px 0;
       border-bottom: 1px solid #242d3d;
     }
 
     .key-box {
       background: #0b0e14;
-      padding: 0.75rem;
+      padding: 12px;
       border: 1px dashed var(--accent);
       color: var(--accent);
       font-family: monospace;
-      margin-top: 0.5rem;
+      margin-top: 8px;
       word-break: break-all;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-wrap: wrap;
+        padding: 15px;
+      }
+
+      .search-box {
+        order: 3;
+        width: 100%;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <div class="logo">NEXUS//STORE</div>
-    <input type="text" id="searchInput" class="search-box" placeholder="Search games..." oninput="filterGames()" />
-    <button class="cart-btn" onclick="openCart()">Cart (<span id="cartCount">0</span>)</button>
-  </header>
+<header>
+  <div class="logo">NEXUS//STORE</div>
 
-  <main class="container">
-    <div class="grid" id="gamesGrid"></div>
-  </main>
+  <input
+    type="text"
+    id="searchInput"
+    class="search-box"
+    placeholder="Search games..."
+    oninput="filterGames()"
+  >
 
-  <!-- Cart & Checkout Modal -->
-  <div class="modal" id="cartModal">
-    <div class="modal-box">
-      <h2>Your Cart</h2>
-      <div id="cartItemsList" style="margin: 1.5rem 0;"></div>
-      <div style="display: flex; justify-content: space-between; margin-bottom: 1.5rem; font-weight: bold;">
-        <span>Total:</span>
-        <span id="cartTotal">$0.00</span>
+  <button class="cart-btn" onclick="openCart()">
+    Cart (<span id="cartCount">0</span>)
+  </button>
+</header>
+
+
+<main class="container">
+  <div class="grid" id="gamesGrid"></div>
+</main>
+
+
+<!-- CART MODAL -->
+
+<div class="modal" id="cartModal">
+
+  <div class="modal-box">
+
+    <h2>Your Cart</h2>
+
+    <div id="cartItemsList" style="margin:25px 0;"></div>
+
+    <div
+      style="
+        display:flex;
+        justify-content:space-between;
+        margin-bottom:20px;
+        font-weight:bold;
+      "
+    >
+      <span>Total:</span>
+      <span id="cartTotal">$0.00</span>
+    </div>
+
+    <button
+      class="btn"
+      style="width:100%; margin-bottom:8px;"
+      onclick="processCheckout()"
+    >
+      Checkout & Get Keys
+    </button>
+
+    <button
+      class="btn"
+      style="
+        width:100%;
+        background:#334155;
+        color:white;
+      "
+      onclick="closeCart()"
+    >
+      Close
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- KEY MODAL -->
+
+<div class="modal" id="keyModal">
+
+  <div class="modal-box">
+
+    <h2 style="color:var(--accent);">
+      Purchase Successful!
+    </h2>
+
+    <p style="color:var(--text-muted); margin:10px 0 20px;">
+      Redeem these activation codes in your platform launcher:
+    </p>
+
+    <div id="keysContainer"></div>
+
+    <button
+      class="btn"
+      style="width:100%; margin-top:25px;"
+      onclick="closeKeys()"
+    >
+      Done
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  /*
+    D-DAY DOWNLOAD LINK
+  */
+
+  const dDayDownload =
+    "https://www.mediafire.com/file/fbvhpw2p7waapiy/D+Day+unlimited+money+MOD+Android+16.zip/file";
+
+
+  /*
+    D-DAY IMAGE
+
+    IMPORTANT:
+    Put your uploaded image in the same folder as index.html
+    and name it:
+
+    d-day.webp
+  */
+
+  const inventory = [
+
+    {
+      id: 1,
+      title: "Cyber Siege 2088",
+      platform: "Steam",
+      price: 39.99,
+      icon: "👾"
+    },
+
+    {
+      id: 2,
+      title: "Mythic Relic RPG",
+      platform: "Epic Games",
+      price: 29.99,
+      icon: "⚔️"
+    },
+
+    {
+      id: 3,
+      title: "Speed Drift X",
+      platform: "Steam",
+      price: 19.99,
+      icon: "🏎️"
+    },
+
+    {
+      id: 4,
+      title: "Space Marauder",
+      platform: "GOG",
+      price: 14.99,
+      icon: "🚀"
+    },
+
+    {
+      id: 5,
+      title: "Dungeon Survivor",
+      platform: "Steam",
+      price: 9.99,
+      icon: "🛡️"
+    },
+
+    /*
+      NEW D-DAY GAME
+    */
+
+    {
+      id: 6,
+      title: "D-Day: WW2",
+      platform: "Android",
+      price: 0,
+      image: "d-day.webp",
+      download: dDayDownload
+    }
+
+  ];
+
+
+  let cart = [];
+
+
+  /*
+    SHOW GAMES
+  */
+
+  function renderGames(items) {
+
+    const grid =
+      document.getElementById("gamesGrid");
+
+    if (items.length === 0) {
+
+      grid.innerHTML =
+        '<p style="color:#94a3b8;grid-column:1/-1;text-align:center;">No games found.</p>';
+
+      return;
+    }
+
+
+    grid.innerHTML = items.map(game => `
+
+      <div class="card">
+
+        <div class="card-img">
+
+          ${
+            game.image
+            ?
+            `<img src="${game.image}" alt="${game.title}">`
+            :
+            game.icon
+          }
+
+        </div>
+
+
+        <div class="card-body">
+
+          <span class="platform-badge">
+            ${game.platform}
+          </span>
+
+
+          <h3 class="card-title">
+            ${game.title}
+          </h3>
+
+
+          <div class="card-footer">
+
+            ${
+              game.download
+
+              ?
+
+              `
+              <a
+                class="btn download-btn"
+                href="${game.download}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ⬇ Download
+              </a>
+              `
+
+              :
+
+              `
+              <span class="price">
+                $${game.price.toFixed(2)}
+              </span>
+
+              <button
+                class="btn"
+                onclick="addToCart(${game.id})"
+              >
+                Add
+              </button>
+              `
+            }
+
+          </div>
+
+        </div>
+
       </div>
-      <button class="btn" style="width: 100%; margin-bottom: 0.5rem;" onclick="processCheckout()">Checkout & Get Keys</button>
-      <button class="btn" style="width: 100%; background: #334155; color: #fff;" onclick="closeCart()">Close</button>
-    </div>
-  </div>
 
-  <!-- Key Delivery Modal -->
-  <div class="modal" id="keyModal">
-    <div class="modal-box">
-      <h2 style="color: var(--accent);">Purchase Successful!</h2>
-      <p style="color: var(--text-muted); margin: 0.5rem 0 1rem 0;">Redeem these activation codes in your platform launcher:</p>
-      <div id="keysContainer"></div>
-      <button class="btn" style="width: 100%; margin-top: 1.5rem;" onclick="closeKeys()">Done</button>
-    </div>
-  </div>
+    `).join("");
 
-  <script>
-    const inventory = [
-      { id: 1, title: "Cyber Siege 2088", platform: "Steam", price: 39.99, icon: "👾" },
-      { id: 2, title: "Mythic Relic RPG", platform: "Epic Games", price: 29.99, icon: "⚔️" },
-      { id: 3, title: "Speed Drift X", platform: "Steam", price: 19.99, icon: "🏎️" },
-      { id: 4, title: "Space Marauder", platform: "GOG", price: 14.99, icon: "🚀" },
-      { id: 5, title: "Dungeon Survivor", platform: "Steam", price: 9.99, icon: "🛡️" }
-    ];
+  }
 
-    let cart = [];
 
-    function renderGames(items) {
-      const grid = document.getElementById("gamesGrid");
-      grid.innerHTML = items.map(game => `
-        <div class="card">
-          <div class="card-img">${game.icon}</div>
-          <div class="card-body">
-            <span class="platform-badge">${game.platform} Key</span>
-            <h3 class="card-title">${game.title}</h3>
-            <div class="card-footer">
-              <span class="price">$${game.price.toFixed(2)}</span>
-              <button class="btn" onclick="addToCart(${game.id})">Add</button>
-            </div>
+  /*
+    SEARCH
+  */
+
+  function filterGames() {
+
+    const q =
+      document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+
+    const filtered =
+      inventory.filter(game =>
+
+        game.title
+          .toLowerCase()
+          .includes(q)
+
+        ||
+
+        game.platform
+          .toLowerCase()
+          .includes(q)
+
+      );
+
+
+    renderGames(filtered);
+
+  }
+
+
+  /*
+    ADD TO CART
+  */
+
+  function addToCart(id) {
+
+    const item =
+      inventory.find(game => game.id === id);
+
+    cart.push(item);
+
+    updateCartUI();
+
+  }
+
+
+  /*
+    CART UI
+  */
+
+  function updateCartUI() {
+
+    document.getElementById("cartCount")
+      .innerText = cart.length;
+
+
+    const list =
+      document.getElementById("cartItemsList");
+
+
+    if (cart.length === 0) {
+
+      list.innerHTML =
+        "<p style='color:#94a3b8;'>Your cart is empty.</p>";
+
+    }
+
+    else {
+
+      list.innerHTML = cart.map((item, index) => `
+
+        <div class="cart-item">
+
+          <div>
+
+            <strong>
+              ${item.title}
+            </strong>
+
+            <br>
+
+            <small style="color:#94a3b8;">
+              ${item.platform}
+            </small>
+
           </div>
-        </div>
-      `).join("");
-    }
 
-    function filterGames() {
-      const q = document.getElementById("searchInput").value.toLowerCase();
-      const filtered = inventory.filter(g => g.title.toLowerCase().includes(q) || g.platform.toLowerCase().includes(q));
-      renderGames(filtered);
-    }
 
-    function addToCart(id) {
-      const item = inventory.find(g => g.id === id);
-      cart.push(item);
-      updateCartUI();
-    }
+          <div>
 
-    function updateCartUI() {
-      document.getElementById("cartCount").innerText = cart.length;
-      const list = document.getElementById("cartItemsList");
-      if (cart.length === 0) {
-        list.innerHTML = "<p style='color: var(--text-muted);'>Your cart is empty.</p>";
-      } else {
-        list.innerHTML = cart.map((item, idx) => `
-          <div class="cart-item">
-            <div>
-              <strong>${item.title}</strong><br>
-              <small style="color: var(--text-muted);">${item.platform}</small>
-            </div>
-            <div>
-              <span>$${item.price.toFixed(2)}</span>
-              <button onclick="removeFromCart(${idx})" style="background: none; border: none; color: var(--danger); margin-left: 10px; cursor: pointer;">✕</button>
-            </div>
+            <span>
+              $${item.price.toFixed(2)}
+            </span>
+
+            <button
+              onclick="removeFromCart(${index})"
+              style="
+                background:none;
+                border:none;
+                color:#ef4444;
+                margin-left:10px;
+                cursor:pointer;
+              "
+            >
+              ✕
+            </button>
+
           </div>
-        `).join("");
-      }
-      const total = cart.reduce((sum, item) => sum + item.price, 0);
-      document.getElementById("cartTotal").innerText = `$${total.toFixed(2)}`;
-    }
 
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      updateCartUI();
-    }
-
-    function openCart() { document.getElementById("cartModal").style.display = "flex"; }
-    function closeCart() { document.getElementById("cartModal").style.display = "none"; }
-
-    function generateLicenseKey() {
-      const seg = () => Math.random().toString(36).substring(2, 7).toUpperCase();
-      return `${seg()}-${seg()}-${seg()}`;
-    }
-
-    function processCheckout() {
-      if (cart.length === 0) return alert("Your cart is empty!");
-      const keysContainer = document.getElementById("keysContainer");
-      keysContainer.innerHTML = cart.map(item => `
-        <div style="margin-bottom: 1rem;">
-          <strong style="font-size: 0.9rem;">${item.title} (${item.platform})</strong>
-          <div class="key-box">${generateLicenseKey()}</div>
         </div>
+
       `).join("");
 
-      cart = [];
-      updateCartUI();
-      closeCart();
-      document.getElementById("keyModal").style.display = "flex";
     }
 
-    function closeKeys() { document.getElementById("keyModal").style.display = "none"; }
 
-    renderGames(inventory);
-  </script>
+    const total =
+      cart.reduce(
+        (sum, item) => sum + item.price,
+        0
+      );
+
+
+    document.getElementById("cartTotal")
+      .innerText =
+      `$${total.toFixed(2)}`;
+
+  }
+
+
+  /*
+    REMOVE FROM CART
+  */
+
+  function removeFromCart(index) {
+
+    cart.splice(index, 1);
+
+    updateCartUI();
+
+  }
+
+
+  /*
+    OPEN CART
+  */
+
+  function openCart() {
+
+    document.getElementById("cartModal")
+      .style.display = "flex";
+
+    updateCartUI();
+
+  }
+
+
+  /*
+    CLOSE CART
+  */
+
+  function closeCart() {
+
+    document.getElementById("cartModal")
+      .style.display = "none";
+
+  }
+
+
+  /*
+    GENERATE DEMO LICENSE KEY
+  */
+
+  function generateLicenseKey() {
+
+    const segment = () =>
+
+      Math.random()
+        .toString(36)
+        .substring(2, 7)
+        .toUpperCase();
+
+
+    return `${segment()}-${segment()}-${segment()}`;
+
+  }
+
+
+  /*
+    CHECKOUT
+  */
+
+  function processCheckout() {
+
+    if (cart.length === 0) {
+
+      alert("Your cart is empty!");
+
+      return;
+
+    }
+
+
+    const keysContainer =
+      document.getElementById("keysContainer");
+
+
+    keysContainer.innerHTML =
+
+      cart.map(item => `
+
+        <div style="margin-bottom:15px;">
+
+          <strong>
+            ${item.title}
+            (${item.platform})
+          </strong>
+
+          <div class="key-box">
+            ${generateLicenseKey()}
+          </div>
+
+        </div>
+
+      `).join("");
+
+
+    cart = [];
+
+    updateCartUI();
+
+    closeCart();
+
+    document.getElementById("keyModal")
+      .style.display = "flex";
+
+  }
+
+
+  /*
+    CLOSE KEY MODAL
+  */
+
+  function closeKeys() {
+
+    document.getElementById("keyModal")
+      .style.display = "none";
+
+  }
+
+
+  /*
+    START WEBSITE
+  */
+
+  renderGames(inventory);
+
+</script>
+
 </body>
 </html>
